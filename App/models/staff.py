@@ -9,14 +9,13 @@ class Staff(User):
   __tablename__ = 'staff'
   ID = db.Column(db.String(10), primary_key=True)
   email = db.Column(db.String(120), nullable=False)
-  teachingExperience = db.Column(db.Integer, nullable=False)
+  #teachingExperience = db.Column(db.Integer, nullable=False)
 
-  def __init__(self, staffID, firstname, lastname, password, email,
-               teachingExperience):
+  def __init__(self, staffID, firstname, lastname, password, email):
     super().__init__(firstname, lastname, password)
     self.ID = staffID
     self.email = email
-    self.teachingExperience = teachingExperience
+    #self.teachingExperience = teachingExperience
 
   def get_id(self):
     return self.ID
@@ -28,8 +27,8 @@ class Staff(User):
         "staffID": self.ID,
         "firstname": self.firstname,
         "lastname": self.lastname,
-        "email": self.email,
-        "teachingExperience": self.teachingExperience
+        "email": self.email
+       # "teachingExperience": self.teachingExperience
     }
 
 # Retrieve reviews by a staff member from the Review model
@@ -40,7 +39,7 @@ class Staff(User):
 
 #create a review for a student
 
-  def createReview(self, student, isPositive, comment):
+  def logReview(self, student, isPositive, comment):
     review = Review(self, student, isPositive, comment)
     student.reviews.append(review)  #add review to the student
     db.session.add(review)  #add to db

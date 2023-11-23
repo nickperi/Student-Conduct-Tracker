@@ -1,8 +1,8 @@
 from App.database import db
-from .user import User
+from App.database import db
 
 
-class Student(User):
+class Student(db.Model):
 	__tablename__ = 'student'
 	ID = db.Column(db.String(10), primary_key=True)
 	contact = db.Column(db.String(30), nullable=False)
