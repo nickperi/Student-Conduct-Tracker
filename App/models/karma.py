@@ -7,13 +7,14 @@ class Karma(db.Model):
   karmaID = db.Column(db.Integer, primary_key=True)
   score = db.Column(db.Float, nullable=False, default=0.0)
   rank = db.Column(db.Integer, nullable=False, default=-99)
+  studentID = db.Column(db.String(10), db.ForeignKey('student.ID'))
 
   def __init__(self, score=0.0, rank=-99):
     self.score = score
     self.rank = rank
 
   def to_json(self):
-    return {"karmaID": self.karmaID, "score": self.score, "rank": self.rank}
+    return {"karmaID": self.karmaID, "studentID": self.studentID, "score": self.score, "rank": self.rank}
 
 # Calculate the karma score for the provided student based on reviews
 

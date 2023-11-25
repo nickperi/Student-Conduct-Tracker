@@ -7,7 +7,7 @@ def create_review(staffID, studentID, is_positive, comment):
     student = db.session.query(Student).get(studentID)
     
     if staff and student:
-        review = staff.createReview(student,is_positive, comment)
+        review = staff.logReview(student,is_positive, comment)
         return review
     return None
 

@@ -5,6 +5,8 @@ from App.database import db
 class Student(db.Model):
 	__tablename__ = 'student'
 	ID = db.Column(db.String(10), primary_key=True)
+	firstname = db.Column(db.String(25), nullable=False)
+	lastname = db.Column(db.String(25), nullable=False)
 	contact = db.Column(db.String(30), nullable=False)
 	studentType = db.Column(db.String(30))  #full-time, part-time or evening
 	yearOfStudy = db.Column(db.Integer, nullable=False)
@@ -12,9 +14,11 @@ class Student(db.Model):
 	karmaID = db.Column(db.Integer, db.ForeignKey('karma.karmaID'))
 
   #When student is newly created there would be no reviews or karma yet
-	def __init__(self, studentID, firstname, lastname, password, contact, studentType, yearofStudy):
-		super().__init__(firstname, lastname, password)
+	def __init__(self, studentID, firstname, lastname, contact, studentType, yearofStudy):
+		#super().__init__(firstname, lastname, password)
 		self.ID = studentID
+		self.firstname = firstname
+		self.lastname = lastname
 		self.contact = contact
 		self.studentType = studentType
 		self.yearOfStudy = yearofStudy
