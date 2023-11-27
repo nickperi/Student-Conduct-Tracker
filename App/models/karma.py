@@ -9,7 +9,8 @@ class Karma(db.Model):
   rank = db.Column(db.Integer, nullable=False, default=-99)
   studentID = db.Column(db.String(10), db.ForeignKey('student.ID'))
 
-  def __init__(self, score=0.0, rank=-99):
+  def __init__(self, studentID, score=0.0, rank=-99):
+    self.studentID = studentID
     self.score = score
     self.rank = rank
 
@@ -31,7 +32,7 @@ class Karma(db.Model):
         badKarma += review.upvotes
         goodKarma += review.downvotes
 
-# Calculate the karma score
+    # Calculate the karma score
     self.score = goodKarma - badKarma
 
     # connect the karma record to the student
