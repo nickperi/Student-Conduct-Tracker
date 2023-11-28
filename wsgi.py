@@ -124,7 +124,7 @@ def create_review_command(staffid, studentid, is_positive, comment):
 #upvotes
 @review_cli.command("upvote", help="Upvotes a review")
 @click.argument("reviewid", default="1")
-@click.argument("staffid", default="100")
+@click.argument("staffid", default="40")
 def upvote_review_command(reviewid, staffid):
 
     review = db.session.query(Review).get(reviewid)
@@ -136,7 +136,7 @@ def upvote_review_command(reviewid, staffid):
 #downvotes
 @review_cli.command("downvote", help="Downvotes a review")
 @click.argument("reviewid", default="1")
-@click.argument("staffid", default="101")
+@click.argument("staffid", default="41")
 def downvote_review_command(reviewid, staffid):
 
     review = db.session.query(Review).get(reviewid)
@@ -167,8 +167,8 @@ karma_cli = AppGroup('karma', help='Karma object commands')
 @click.argument("score", default=0.0)
 @click.argument("rank", default=-99)
 def create_karma_command(studentid, score, rank):
-    createKarma(studentid, score, rank)
-    print(f'karma {id} created!')
+    karma = createKarma(studentid, score, rank)
+    print(f'karma {karma.karmaID} created!')
 
 # this command will be : flask karma create
 

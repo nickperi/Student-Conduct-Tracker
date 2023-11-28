@@ -11,7 +11,7 @@ class Student(db.Model):
 	studentType = db.Column(db.String(30))  #full-time, part-time or evening
 	yearOfStudy = db.Column(db.Integer, nullable=False)
 	reviews = db.relationship('Review', backref='student', lazy='joined')
-	score = db.Column(db.Integer)
+	karmaID = db.Column(db.Integer)
 
   #When student is newly created there would be no reviews or karma yet
 	def __init__(self, studentID, firstname, lastname, contact, studentType, yearofStudy):
