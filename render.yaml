@@ -2,7 +2,7 @@ services:
   - type: web
     name: tracking-student-postgres-api
     env: python
-    repo: https://github.com/CTRL-ALT-DELETE-SAS/Student-Conduct-Tracker.git
+    repo: https://github.com/nickperi/Student-Conduct-Tracker.git
     plan: free
     branch: main
     healthCheckPath: /
